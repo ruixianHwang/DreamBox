@@ -19,6 +19,7 @@ function MovieHome() {
           .then((res) => res.json())
           .then((res) => {
             setItems(res);
+            // console.log(res)
 
             // console.log(items);
           }); //비동기 함수
@@ -28,19 +29,20 @@ function MovieHome() {
        function InsertPage() {
           navigate('/insertmovie')
        }
-
+       
 
     return (
         <div>
-            <Container className='temp'>
+            <Container className='temp' >
             <Header/>
             <h1>메인페이지</h1>
             {items.map((item) => (
                 <MovieItem item={item} key={item.movieId}/>                
             ))}
-            <Button variant='success' onClick={InsertPage}>새로 추가</Button>
-            <Button variant='primary' onClick={()=> navigate('/movieapi')}>영화 api 리스트 페이지 이동</Button>
-            <Button variant='primary' onClick={()=> navigate('/movie/2')}>1번으로 이동</Button>
+            <hr/>
+            <Button variant='primary' onClick={()=> navigate('/movieapi')}>실시간 영화 정보</Button>
+            <Button variant='danger' onClick={InsertPage} style={{margin : '1em'}}>새로 추가(관리자)</Button>
+            
             </Container>
         </div>
     )

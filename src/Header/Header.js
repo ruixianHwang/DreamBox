@@ -1,20 +1,33 @@
-import '../projectcss/movie.css'
-import { Link, NavLink } from 'react-router-dom';
+import '../projectCSS/movie.css'
+import { Link, useNavigate } from 'react-router-dom';
+import SearchControll from '../components/SearchControll';
+import LoginForm from '../components/LoginForm';
+
+
 
 function Header() {
 
     return(
-        <nav  className="navbar navbar-dark bg-dark navbar-expand-lg" >
-          <Link to='/' ><img src='https://i.esdrop.com/d/f/8AgqMbQApP/wA6tWxaDO6.png' style={{height:'5vh'}}></img></Link>
-           <ul className="navbar-nav">
+      <div className='header'>
+        <nav  className="navbar navbar-dark bg-dark navbar-expand-lg header" style={{height : '8vh'}}>
+          
+          <Link to='/' className=''><img  src='https://i.esdrop.com/d/f/8AgqMbQApP/Mb1e0AVBWY.png' style={{height:'8vh'}}></img></Link>          
+           <ul className="navbar-nav ">
+             
            <li className="nav-item dropdown">
               <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                페이지 이동 확인탭(사용예시)
+                test
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <Link to='/' className='dropdown-item'>메인페이지</Link>
-              <Link to='/movie/2' className='dropdown-item'>상세보기 2번</Link>
-              <Link to='/insert' className='dropdown-item'>추가하기</Link>
+              <Link to='/' className='dropdown-item'>영화 페이지</Link>
+              <Link to='/store' className='dropdown-item'>스토어 페이지</Link>
+              <Link to='/movieapi' className='dropdown-item'>실시간 영화 정보</Link>
+              <Link to='/bookinghome' className='dropdown-item'>예매?</Link>
+              <Link to='/booking' className='dropdown-item'>예매 페이지</Link>
+              <Link to='/seatform' className='dropdown-item'>좌석 정보</Link>
+              <Link to='/basket' className='dropdown-item'>장바구니 정보</Link>
+              <Link to='/payment' className='dropdown-item'>결제? 정보</Link>
+
               </div>
             </li>
            <li className="nav-item dropdown">
@@ -22,8 +35,8 @@ function Header() {
                 영화
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="/a">영화1</a>
-                <a className="dropdown-item" href="/b">영화2</a>
+                <Link to='/' className='dropdown-item'>영화 페이지</Link>
+                <Link to='/movieapi' className='dropdown-item'>실시간 영화 정보</Link>
                 <a className="dropdown-item" href="/c">영화3</a>
               </div>
             </li>
@@ -42,7 +55,7 @@ function Header() {
                 극장
               </a>
               <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="/a">극장1</a>
+               <Link to='/cinema' className='dropdown-item'>상영관 정보</Link>
                 <a className="dropdown-item" href="/b">극장2</a>
                 <a className="dropdown-item" href="/c">극장3</a>
               </div>
@@ -61,29 +74,44 @@ function Header() {
               </div>
             </li>
             <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                스토어
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="/a">스토어1</a>
-                <a className="dropdown-item" href="/b">스토어2</a>
-                <a className="dropdown-item" href="/c">스토어3</a>
-              </div>
-            </li>
-            <li className="nav-item dropdown">
-              <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                혜택
-              </a>
-              <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                <a className="dropdown-item" href="/a">헤택1</a>
-                <a className="dropdown-item" href="/b">혜택2</a>
-                <a className="dropdown-item" href="/c">혜택3</a>
-              </div>
-            </li>
-          </ul>
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        고객센터
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a className="dropdown-item" href="http://localhost:3000/board">문의게시판</a>
+                        <a className="dropdown-item" href="/b">1:1 문의</a>
+                    </div>
+                </li>
+
+                <li className="nav-item dropdown">
+                    <a className="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
+                       aria-haspopup="true" aria-expanded="false">
+                        커뮤니티
+                    </a>
+                    <div className="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                        <a className="dropdown-item" href="http://localhost:3000/reviewBoard">자유게시판</a>
+                        <a className="dropdown-item" href="/b">번개모임</a>
+
+                    </div>
+                </li>  
+           
+          <li>
+            <div style={{position : 'fixed', left : 1, right : 1, zIndex : -1}}>
+            <SearchControll/>         
+            </div>
+          </li> 
+            
+            
+            </ul>    
+          </nav>
+          </div>
+
+          
+             
+                            
       
-      </nav>
     )
-}
+          }
 
 export default Header;
